@@ -28,7 +28,8 @@ export default StyleSheet.create({
   },
 
   picker: {
-    backgroundColor: 'rgb(255, 255, 255)',
+    // backgroundColor: 'rgb(255, 255, 255)',
+    backgroundColor: 'rgb(0,0,0)',
     borderRadius: 2,
 
     position: 'absolute',
