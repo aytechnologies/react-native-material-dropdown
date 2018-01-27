@@ -55,6 +55,7 @@ export default class Dropdown extends PureComponent {
     textColor: 'rgba(0, 0, 0, .87)',
     itemColor: 'rgba(0, 0, 0, .54)',
     baseColor: 'rgba(0, 0, 0, .38)',
+    dropdownBackgroundColor: 'rgba(255, 255, 255)'
 
     itemCount: 4,
     itemPadding: 8,
@@ -106,6 +107,7 @@ export default class Dropdown extends PureComponent {
     itemColor: PropTypes.string,
     selectedItemColor: PropTypes.string,
     baseColor: PropTypes.string,
+    dropdownBackgroundColor: PropTypes.string
 
     itemTextStyle: Text.propTypes.style,
 
@@ -530,6 +532,7 @@ export default class Dropdown extends PureComponent {
       renderAccessory,
       containerStyle,
       pickerStyle: pickerStyleOverrides,
+      dropdownBackgroundColor,
 
       rippleInsets,
       rippleOpacity,
@@ -553,6 +556,7 @@ export default class Dropdown extends PureComponent {
       itemPadding,
       dropdownPosition,
       animationDuration,
+      dropdownBackgroundColor,
     } = props;
 
     let { left, top, width, opacity, selected, modal } = this.state;
@@ -605,6 +609,27 @@ export default class Dropdown extends PureComponent {
       transform: [{ translateY }],
     };
 
+    let picker = {
+      // backgroundColor: 'rgb(255, 255, 255)',
+      backgroundColor: dropdownBackgroundColor,
+      borderRadius: 2,
+
+      position: 'absolute',
+
+      ...Platform.select({
+        ios: {
+          shadowRadius: 2,
+          shadowColor: 'rgba(0, 0, 0, 1.0)',
+          shadowOpacity: 0.54,
+          shadowOffset: { width: 0, height: 2 },
+        },
+
+        android: {
+          elevation: 2,
+        },
+      }),
+    }
+
     let { bottom, ...insets } = this.rippleInsets();
     let rippleStyle = {
       ...insets,
@@ -646,7 +671,7 @@ export default class Dropdown extends PureComponent {
           <TouchableWithoutFeedback onPress={this.onClose}>
             <View style={overlayStyle}>
               <Animated.View
-                style={[styles.picker, pickerStyle, pickerStyleOverrides]}
+                style={[picker, pickerStyle, pickerStyleOverrides]}
               >
                 <ScrollView
                   ref={this.updateScrollRef}
