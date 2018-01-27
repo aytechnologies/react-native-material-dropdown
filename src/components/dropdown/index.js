@@ -55,7 +55,7 @@ export default class Dropdown extends PureComponent {
     textColor: 'rgba(0, 0, 0, .87)',
     itemColor: 'rgba(0, 0, 0, .54)',
     baseColor: 'rgba(0, 0, 0, .38)',
-    dropdownBackgroundColor: 'rgba(255, 255, 255)'
+    dropdownBackgroundColor: 'rgba(255, 255, 255)',
 
     itemCount: 4,
     itemPadding: 8,
