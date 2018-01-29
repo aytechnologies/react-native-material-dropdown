@@ -27,27 +27,6 @@ export default StyleSheet.create({
     backgroundColor: 'transparent', /* XXX: Required */
   },
 
-  picker: {
-    // backgroundColor: 'rgb(255, 255, 255)',
-    backgroundColor: 'rgb(0,0,0)',
-    borderRadius: 2,
-
-    position: 'absolute',
-
-    ...Platform.select({
-      ios: {
-        shadowRadius: 2,
-        shadowColor: 'rgba(0, 0, 0, 1.0)',
-        shadowOpacity: 0.54,
-        shadowOffset: { width: 0, height: 2 },
-      },
-
-      android: {
-        elevation: 2,
-      },
-    }),
-  },
-
   item: {
     textAlign: 'left',
   },
